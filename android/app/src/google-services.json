@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "674697120763",
+    "project_id": "my-first-project-f616c",
+    "storage_bucket": "my-first-project-f616c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674697120763:android:654ab00be3cd8c03e0595e",
+        "android_client_info": {
+          "package_name": "com.satyabrata.hello_world"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "674697120763-fpmfo647lnidqtfsg2e23b8tjv7a5pf1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD02nVTZv_yzSUGygAtXl7TL7wDjfFdhc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "674697120763-fpmfo647lnidqtfsg2e23b8tjv7a5pf1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
