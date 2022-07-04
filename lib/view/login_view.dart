@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:hello_world/view/register_view.dart';
 import '../firebase_options.dart';
+import "dart:developer" as devtools;
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -32,7 +32,9 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Login"),),
+      appBar: AppBar(
+        title: const Text("Login"),
+      ),
       body: Column(
         children: [
           TextField(
@@ -40,16 +42,14 @@ class _LoginViewState extends State<LoginView> {
             enableSuggestions: false,
             autocorrect: false,
             keyboardType: TextInputType.emailAddress,
-            decoration:
-            const InputDecoration(hintText: ' Enter Your Email'),
+            decoration: const InputDecoration(hintText: ' Enter Your Email'),
           ),
           TextField(
             controller: _password,
             obscureText: true,
             enableSuggestions: false,
             autocorrect: false,
-            decoration: const InputDecoration(
-                hintText: ' Enter Your Password'),
+            decoration: const InputDecoration(hintText: ' Enter Your Password'),
           ),
           TextButton(
             onPressed: () async {
@@ -58,20 +58,24 @@ class _LoginViewState extends State<LoginView> {
               try {
                 final credentials = await FirebaseAuth.instance
                     .signInWithEmailAndPassword(
-                    email: email, password: password);
-                print(credentials);
-              } on FirebaseAuthException catch (e){
-                print(e.code);
+                        email: email, password: password);
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil("/notes/", (route) => false);
+                // devtools.log(credentials.toString());
+              } on FirebaseAuthException catch (e) {
+                devtools.log(e.code.toString());
               }
             },
             child: const Text("Login"),
           ),
-          TextButton(onPressed: (){
-            Navigator.of(context).pushNamedAndRemoveUntil("/register/", (route) => false);
-      }, child: const Text("Not registered yet? Register Here"))
+          TextButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil("/register/", (route) => false);
+              },
+              child: const Text("Not registered yet? Register Here"))
         ],
       ),
     );
   }
-
 }
