@@ -5,6 +5,8 @@ import 'package:hello_world/constants/routes.dart';
 import '../firebase_options.dart';
 import "dart:developer" as devtools;
 
+import '../utilities/show_error_dialogue.dart';
+
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
 
@@ -64,7 +66,11 @@ class _LoginViewState extends State<LoginView> {
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil(notesRoute, (route) => false);
               } on FirebaseAuthException catch (e) {
-                devtools.log(e.code.toString());
+                await showErrorDialog(
+                    context, "ERROR : ${e.code.toString().toUpperCase()}");
+              } catch (e) {
+                await showErrorDialog(
+                    context, "ERROR : ${e.toString()}");
               }
             },
             child: const Text("Login"),
