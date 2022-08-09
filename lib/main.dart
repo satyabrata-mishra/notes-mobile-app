@@ -8,7 +8,7 @@ import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools;
 
-void main()  {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
@@ -61,7 +61,6 @@ class Homepage extends StatelessWidget {
     );
   }
 }
-
 
 Future<bool> showLogOutDialog(BuildContext context) {
   return showDialog(
